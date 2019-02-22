@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title%}
-<h3>here we are in the homepage</h3>
+<h2>Please adopt!</h2>
 <a href="/add">Add Pet</a>
 {% endblock %}
 
 {% block content%}
 <ul>
     {% for pet in pets %}
-    <li>{{pet.name}} <br> <img src='{{pet.photo_url}}'> <br><strong>{{pet.available}}</strong></strong></li>
+    <li><a href="/pet/{{pet.id}}">{{pet.name}}</a> <br><img src='{{pet.photo_url}}' width="200px"><br>
+        <strong>{%if pet.available == True %}Available for adoption{% endif %}</strong>
+    </li>
     {% endfor %}
 </ul>
 {% endblock %}
