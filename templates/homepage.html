@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title%}
+<h3>here we are in the homepage</h3>
+<a href="/add">Add Pet</a>
+{% endblock %}
+
+{% block content%}
+<ul>
+    {% for pet in pets %}
+    <li>{{pet.name}} <br> <img src='{{pet.photo_url}}'> <br><strong>{{pet.available}}</strong></strong></li>
+    {% endfor %}
+</ul>
+{% endblock %}
