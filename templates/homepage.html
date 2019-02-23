@@ -16,7 +16,7 @@
 <h1>Our Pets</h1>
 <ul>
     {% for pet in pets %}
-    <li><a href="/pet/{{pet.id}}">{{pet.name}}</a> <br><img src='{{pet.photo_url}}' width="200px"><br>
+    <li><a href="/pet/{{pet.id}}">{{pet.name}}</a> <br><img src='{{pet.photo_url}}'  width="200px"><br>
         <strong>{%if pet.available == True %}Available for adoption{% endif %}</strong>
     </li>
     {% endfor %}

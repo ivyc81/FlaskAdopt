@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from forms import AddNewPetForm, EditPetForm
 from flask_sqlalchemy import SQLAlchemy
 from pet_finder import find_random_pet 
-
+DEFAULT_PHOTO = 'https://shenandoahcountyva.us/bos/wp-content/uploads/sites/4/2018/01/picture-not-available-clipart-12.jpg'
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "oh-so-secret"
@@ -27,9 +27,16 @@ def list_of_pets():
     pets = Pet.query.all()
 
     random_pet = find_random_pet()
+    
+    # if random_pet['photo']:
+    #     photo = random_pet['photo']
+    # else:
+    #     photo = DEFAULT_PHOTO
+    print('random photo: ',random_pet['photo'])
+    photo = random_pet['photo'] or DEFAULT_PHOTO
 
     return render_template('homepage.html', pets=pets, name=random_pet['name'],
-                            age=random_pet['age'], photo=random_pet['photo'])
+                            age=random_pet['age'], photo=photo)
 
 @app.route('/add', methods=["GET", "POST"])
 def add_new_pet():
