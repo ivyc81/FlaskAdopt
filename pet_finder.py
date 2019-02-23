@@ -8,6 +8,8 @@ def find_random_pet():
     response_dic = response.json()
     pet_name = response_dic['petfinder']['pet']['name']['$t']
     pet_age = response_dic['petfinder']['pet']['age']['$t']
-    pet_photo = response_dic['petfinder']['pet']['media']['photos']['photo'][3]['$t']
-
+    try:
+        pet_photo = response_dic['petfinder']['pet']['media']['photos']['photo'][3]['$t']
+    except KeyError:
+        pet_photo = ''
     return {'name':pet_name, 'age':pet_age, 'photo':pet_photo}

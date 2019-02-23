@@ -33,10 +33,10 @@ def list_of_pets():
     # else:
     #     photo = DEFAULT_PHOTO
     print('random photo: ',random_pet['photo'])
-    try:
-        photo = random_pet['photo'] 
-    except KeyError:
-        photo = DEFAULT_PHOTO
+    
+    photo = random_pet['photo'] or DEFAULT_PHOTO
+    
+        
 
     return render_template('homepage.html', pets=pets, name=random_pet['name'],
                             age=random_pet['age'], photo=photo)
