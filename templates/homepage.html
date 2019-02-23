@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
 {% block title%}
+
 <h2>Please adopt!</h2>
 <a href="/add">Add Pet</a>
 {% endblock %}
 
 {% block content%}
+<h1>Random Petfinder Pet</h1>
+<div class='random-pet'>
+    <h2>Name: {{name}}</h2>
+    <img src="{{photo}}" alt="" width="200px">
+    <div>Age: {{age}}</div>
+</div>
+<h1>Our Pets</h1>
 <ul>
     {% for pet in pets %}
     <li><a href="/pet/{{pet.id}}">{{pet.name}}</a> <br><img src='{{pet.photo_url}}' width="200px"><br>

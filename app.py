@@ -5,7 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from flask_wtf import FlaskForm
 from forms import AddNewPetForm, EditPetForm
 from flask_sqlalchemy import SQLAlchemy
-
+from pet_finder import find_random_pet 
 
 
 app = Flask(__name__)
@@ -26,7 +26,10 @@ def list_of_pets():
     '''display list of pets'''
     pets = Pet.query.all()
 
-    return render_template('homepage.html', pets=pets)
+    random_pet = find_random_pet()
+
+    return render_template('homepage.html', pets=pets, name=random_pet['name'],
+                            age=random_pet['age'], photo=random_pet['photo'])
 
 @app.route('/add', methods=["GET", "POST"])
 def add_new_pet():
